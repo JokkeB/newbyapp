@@ -22,8 +22,8 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 })
 
-app.get('/lijst', (req, res) => {
-    pool.query('SELECT * FROM LIJST', (err, res2) => {
+app.get('/autos', (req, res) => {
+    pool.query('SELECT * FROM AUTOS', (err, res2) => {
         console.log(res2);
         res.send(JSON.stringify(res2.rows));
     })
