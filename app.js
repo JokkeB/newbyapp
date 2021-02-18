@@ -18,6 +18,12 @@ const pool = new Pool({
     },
 })
 
+var cors = require('cors')
+app.use(cors())
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json())
+
 app.get('/', (req, res) => {
     res.send('Hello World!');
 })
@@ -36,4 +42,19 @@ app.get('/test', (req, res) => {
 
 app.listen(port, () => {
     console.log(`App Server luistert op poort ${port}`)
+})
+
+var cors = require('cors')
+app.use(cors())
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json())
+
+
+app.post('/nieuw', (req, res) => {
+    console.log(req.body);
+    pool.query(`INSERT INTO autos(id,merk,model,kleur) VALUES ('${req.body.id}','${req.body.merk}','${req.body.model}','${req.body.kleur}')`, (err, res2) =>{
+        res.send(JSON.stringify(res2.body));
+    });
+    res.send('stop');
 })
