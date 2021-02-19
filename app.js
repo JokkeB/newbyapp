@@ -24,6 +24,13 @@ app.use(cors())
 var bodyParser = require('body-parser');
 app.use(bodyParser.json())
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 app.get('/', (req, res) => {
     res.send('Hello World!');
 })
@@ -47,6 +54,12 @@ app.listen(port, () => {
 var cors = require('cors')
 app.use(cors())
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.json())
 
@@ -56,5 +69,7 @@ app.post('/nieuw', (req, res) => {
     pool.query(`INSERT INTO autos(id,merk,model,kleur) VALUES ('${req.body.id}','${req.body.merk}','${req.body.model}','${req.body.kleur}')`, (err, res2) =>{
         res.send(JSON.stringify(res2.body));
     });
-    res.send('stop');
+    res.send(JSON.stringify('stop'));
 })
+
+

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>Nieuwe Auto Toevoegen</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  [fullscreen]="true">
+  <ion-item>
+    <ion-label position="floating">Merk</ion-label>
+    <ion-input type="text" name="merk" [(ngModel)]="auto.merk"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Model</ion-label>
+    <ion-input type="text" name="model" [(ngModel)]="auto.model"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Kleur</ion-label>
+    <ion-input type="text" name="kleur" [(ngModel)]="auto.kleur"></ion-input>
+  </ion-item>
+  <ion-button (click)="opslaan()" color="danger">Voeg nieuwe auto toe</ion-button>
+</ion-content>
